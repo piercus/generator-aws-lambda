@@ -11,7 +11,7 @@ const fsP = pify(fs);
 test.beforeEach(async t => {
 	t.context.dir = tempfile();
 	await pify(helpers.testDirectory)(t.context.dir);
-	t.context.generator = helpers.createGenerator('aws-lambda', [path.join(__dirname, '/app')], null, {skipInstall: true});
+	t.context.generator = helpers.createGenerator('aws-lambda-worker', [path.join(__dirname, '/app')], null, {skipInstall: true});
 });
 
 test.serial('generates expected files', async t => {

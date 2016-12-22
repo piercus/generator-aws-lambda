@@ -5,8 +5,6 @@ const uppercamelcase = require('uppercamelcase');
 const _s = require('underscore.string');
 
 const features = {
-	dynongo: '^0.8.0',
-	pify: '^2.3.0'
 };
 
 const featuresList = Object.keys(features);
@@ -14,13 +12,6 @@ const featuresList = Object.keys(features);
 module.exports = class extends yeoman.Base {
 
 	init() {
-		const featurePrompt = {
-			name: 'features',
-			message: 'What more would you like?',
-			type: 'checkbox',
-			choices: featuresList.map(feature => ({name: feature, value: feature}))
-		};
-
 		// Ask the questions
 		return this.prompt([
 			{
@@ -60,18 +51,10 @@ module.exports = class extends yeoman.Base {
 				validate: val => val.length > 0 ? true : 'You have to provide your email address'
 			},
 			{
-				name: 'docs',
-				message: 'Do you want to generate API docs?',
-				type: 'confirm',
-				default: true
-			},
-			{
 				name: 'region',
-				message: 'Which AWS region you want to work with',
-				type: 'confirm',
+				message: 'Which AWS region you want to work with?',
 				default: 'us-east-1'
-			},
-			featurePrompt
+			}
 		]).then(props => {
 			// Build the list of dependencies
 			const dependencies = {};
