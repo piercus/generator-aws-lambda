@@ -1,12 +1,8 @@
 {
-	"staging": {<% if (includeDynongo) { %>
-		"DynamoDB": {
-			"prefix": "staging"
-		}<% } %>
+	"region" : "<%= region %>",
+	"lbdName" : "<%= functionName %>",
+	"staging": {
 	},
-	"production": {<% if (includeDynongo) { %>
-		"DynamoDB": {
-			"prefix": "production"
-		}<% } %>
+	"production": {
 	}
 }

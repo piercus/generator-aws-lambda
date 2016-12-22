@@ -4,14 +4,7 @@ require('./env');
 const index = require('../../');
 
 module.exports = (test, method, path) => {
-	const options = {
-		'http-method': method,
-		'resource-path': path,
-		'identity': {},
-		'body': {},
-		'params': {},
-		'query': {}
-	};
+	const options = {};
 
 	test.before(() => {
 		// run setup script

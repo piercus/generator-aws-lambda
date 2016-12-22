@@ -23,21 +23,17 @@
 <% }); -%>
   ],
   "dependencies": {
-    "bragg": "^1.0.0",
-    "bragg-router": "^1.0.1",
-    "bragg-env": "^1.0.1"<%= Object.keys(dependencies).length > 0 ? ',' : '' %>
+    "aws-lambda-env": "^3.0.0"<%= Object.keys(dependencies).length > 0 ? ',' : '' %>
 <% Object.keys(dependencies).forEach(function(dep, i) { -%>
     "<%= dep %>": "<%= dependencies[dep] %>"<%= i < Object.keys(dependencies).length-1 ? ',' : '' %>
 <% }); -%>
   },
   "devDependencies": {
     "ava": "*",
-    "aws-lambda-pify": "^3.0.0",
     "aws-sdk": "^2.2.33",
     "del": "^2.0.2",
     "dependency-tree": "^4.0.0",
-    "gulp": "^3.9.0",<% if (generateDocs) { %>
-    "gulp-api-doc": "^1.1.0",<% } %>
+    "gulp": "^3.9.0",
     "gulp-install": "^0.6.0",
     "gulp-remove-empty-lines": "0.0.2",
     "gulp-strip-comments": "^1.0.1",

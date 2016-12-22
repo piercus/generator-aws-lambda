@@ -60,24 +60,21 @@ module.exports = class extends yeoman.Base {
 				validate: val => val.length > 0 ? true : 'You have to provide your email address'
 			},
 			{
-				name: 'invoke',
-				message: 'Do you want to invoke other services?',
-				type: 'confirm',
-				default: true
-			},
-			{
 				name: 'docs',
 				message: 'Do you want to generate API docs?',
 				type: 'confirm',
 				default: true
 			},
+			{
+				name: 'region',
+				message: 'Which AWS region you want to work with',
+				type: 'confirm',
+				default: 'us-east-1'
+			},
 			featurePrompt
 		]).then(props => {
 			// Build the list of dependencies
 			const dependencies = {};
-			if (props.invoke) {
-				dependencies['bragg-route-invoke'] = '^1.0.2';
-			}
 
 			// Build up the template
 			const tpl = {
@@ -86,8 +83,8 @@ module.exports = class extends yeoman.Base {
 				keywords: props.keywords,
 				name: props.name || this.user.git.name(),
 				email: props.email || this.user.git.email(),
-				invoke: props.invoke,
 				generateDocs: props.docs,
+				region: props.region,
 				dependencies,
 				date: moment().format('DD MMM. YYYY')
 			};

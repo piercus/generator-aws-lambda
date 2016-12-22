@@ -11,7 +11,7 @@ Run the following command to create a zip file.
 $ npm run build
 ```
 
-The zip file, generated in the `dist` directory, can now be deployed to AWS Lambda.
+The lambda function will be published on AWS Lamda.
 
 ### package.json
 
@@ -20,8 +20,3 @@ in `package.json`. This property determines which files will be included in the 
 
 If the `files` property is not provided, a fallback pattern will be used that tries to create
 the zip best effort.
-
-
-## Author
-
-- <%= name %> [<<%= email %>>]

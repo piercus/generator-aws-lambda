@@ -4,6 +4,7 @@ const path = require('path');
 const gulp = require('gulp');
 const install = require('gulp-install');
 const zip = require('gulp-zip');
+const lambda = require('gulp-awslambda');
 const strip = require('gulp-strip-comments');
 const removeEmptyLines = require('gulp-remove-empty-lines');<% if (generateDocs) { %>
 const apidoc = require('gulp-api-doc');<% } %>
@@ -47,7 +48,7 @@ const tree = deptree({filename: pkg.main, root: __dirname});
 const cleaned = deps(clean(tree, 'aws-sdk'));
 const cleanUpArray = Object.keys(deps(tree)).filter(key => cleaned[key] === undefined);
 
-gulp.task('clean', ['zip'], () => del('.temp'));
+gulp.task('clean', ['publish'], () => del('.temp'));
 
 gulp.task('cleanDeps', ['copyAndInstall'], () => {
 	return del(cleanUpArray.map(x => `.temp/node_modules/{${x},${x}/**}`));
@@ -79,17 +80,13 @@ gulp.task('copyAndInstall', () => {
 		.pipe(install({production: true}));
 });
 
-gulp.task('zip', ['copyAndInstall', 'cleanDeps'], () => {
+gulp.task('publish', ['copyAndInstall', 'cleanDeps'], () => {
 	return gulp.src('.temp/**')
 		.pipe(zip('build.zip'))
-		.pipe(gulp.dest('dist'));
+		.pipe(lambda(config.region, {
+			region : config.region
+		}))
 });
-<% if (generateDocs) { %>
-gulp.task('docs', () => {
-	return gulp.src('lib')
-        .pipe(apidoc())
-        .pipe(gulp.dest(`docs/${pkg.name}`));
-});
-<% } %>
-gulp.task('build', ['copyAndInstall', 'cleanDeps', 'zip', 'clean'<% if (generateDocs) { %>, 'docs'<% } %>]);
+
+gulp.task('build', ['copyAndInstall', 'cleanDeps', 'publish', 'clean']);
 gulp.task('default', ['build']);

@@ -39,8 +39,6 @@ test.serial('generates expected files', async t => {
 		'package.json',
 		'readme.md',
 		'config.json',
-		'lib/error-handler.js',
-		'lib/controllers/hello.js',
 		'test/test.js',
 		'test/fixtures/bootstrap.js',
 		'test/fixtures/env.js'
@@ -55,9 +53,8 @@ test.serial('generates expected package.json', async t => {
 		functionDescription: 'bar',
 		keywords: ['foo', 'bar', 'baz'],
 		githubUsername: 'test',
-		invoke: true,
 		docs: false,
-		features: ['dynongo']
+		features: []
 	});
 
 	await pify(generator.run.bind(generator))();
@@ -68,10 +65,6 @@ test.serial('generates expected package.json', async t => {
 	assert.equal(pkg.description, 'bar');
 	assert.deepEqual(pkg.keywords, ['foo', 'bar', 'baz']);
 	assert.deepEqual(pkg.dependencies, {
-		bragg: '^1.0.0',
-		'bragg-router': '^1.0.1',
-		'bragg-env': '^1.0.1',
-		'bragg-route-invoke': '^1.0.2',
-		dynongo: '^0.8.0'
+		'aws-lambda-env': '^3.0.0'
 	});
 });
