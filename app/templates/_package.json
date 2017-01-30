@@ -10,7 +10,6 @@
   "main": "index.js",
   "scripts": {
     "test": "xo && ava",
-    "build": "grunt build",
     "deploy": "grunt deploy"
   },
   "files": [
@@ -34,7 +33,7 @@
     "aws-sdk": "^2.2.33",
     "xo": "*",
     "grunt": "^1.0.1",
-    "grunt-aws-lambda": "^0.13.0",
+    "grunt-aws-lambda": "^0.13.0"
   },
   "xo": {
     "esnext": true

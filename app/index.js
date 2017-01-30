@@ -15,6 +15,11 @@ module.exports = class extends yeoman.Base {
 		// Ask the questions
 		return this.prompt([
 			{
+				name: 'functionArn',
+				message: 'What\'s the arn of your lambda function ?',
+				validate: val => val.length > 0 ? true : 'You have to provide an arn'
+			},
+			{
 				name: 'functionName',
 				message: 'What\'s the name of your service?',
 				default: this.appname.replace(/\s/g, '-'),
@@ -64,6 +69,7 @@ module.exports = class extends yeoman.Base {
 				functionName: props.functionName,
 				functionDescription: props.functionDescription,
 				keywords: props.keywords,
+				arn: props.arn,
 				name: props.name || this.user.git.name(),
 				email: props.email || this.user.git.email(),
 				generateDocs: props.docs,
