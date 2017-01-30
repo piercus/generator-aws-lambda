@@ -8,7 +8,7 @@
 Run the following command to create a zip file.
 
 ```
-$ npm run build
+$ npm run deploy
 ```
 
 The lambda function will be published on AWS Lamda.

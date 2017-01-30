@@ -10,7 +10,8 @@
   "main": "index.js",
   "scripts": {
     "test": "xo && ava",
-    "build": "gulp build"
+    "build": "grunt build",
+    "deploy": "grunt deploy"
   },
   "files": [
     "index.js",
@@ -31,14 +32,9 @@
   "devDependencies": {
     "ava": "*",
     "aws-sdk": "^2.2.33",
-    "del": "^2.0.2",
-    "dependency-tree": "^4.0.0",
-    "gulp": "^3.9.0",
-    "gulp-install": "^0.6.0",
-    "gulp-remove-empty-lines": "0.0.2",
-    "gulp-strip-comments": "^1.0.1",
-    "gulp-zip": "^3.0.2",
-    "xo": "*"
+    "xo": "*",
+    "grunt": "^1.0.1",
+    "grunt-aws-lambda": "^0.13.0",
   },
   "xo": {
     "esnext": true
