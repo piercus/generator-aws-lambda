@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "ava": "*",
+    "aws-lambda-pify": "*",
     "aws-sdk": "^2.2.33",
     "xo": "*",
     "grunt": "^1.0.1",
