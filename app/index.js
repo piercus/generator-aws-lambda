@@ -15,7 +15,7 @@ module.exports = class extends yeoman.Base {
 		// Ask the questions
 		return this.prompt([
 			{
-				name: 'functionArn',
+				name: 'arn',
 				message: 'What\'s the arn of your lambda function ?',
 				validate: val => val.length > 0 ? true : 'You have to provide an arn'
 			},
